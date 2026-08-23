@@ -30,4 +30,4 @@
 
 ## 另
 
-default压缩包是我最初开始用的版本，若担心这个不稳定建议用 default 这个，把压缩包内容拖至yasb主目录，让它 Reload 一下就能看到效果了
+default压缩包是我最初开始用的版本，若担心 YASB-Settings 的不稳定建议用 default 这个，把压缩包内容拖至yasb主目录，让它 Reload 一下就能看到效果了
