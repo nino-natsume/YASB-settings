@@ -1,4 +1,4 @@
-﻿# yaml-language-server: $schema=https://raw.githubusercontent.com/amnweb/yasb/main/schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/amnweb/yasb/main/schema.json
 # For more information, visit https://github.com/amnweb/yasb/wiki
 watch_stylesheet: true
 watch_config: true
@@ -95,25 +95,25 @@ widgets:
       buttons:
         lock:
         - "\uDB80\uDF41"
-        - Lock
+        - 锁定
         signout:
         - "\uDB80\uDF43"
-        - Sign out
+        - 注销
         sleep:
         - "\uDB82\uDD04"
-        - Sleep
+        - 睡眠
         hibernate:
         - "\uDB82\uDD01"
-        - Hibernate
+        - 休眠
         restart:
         - "\uDB81\uDC53"
-        - Restart
+        - 重启
         shutdown:
         - "\uDB82\uDD06"
-        - Shut Down
+        - 关机
         cancel:
         - ''
-        - Cancel
+        - 取消
   active_window:
       type: yasb.active_window.ActiveWindowWidget
       options:
