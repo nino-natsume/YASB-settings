@@ -20,9 +20,20 @@
           on_right: "do_nothing"
 ```
 
-左2软件可通过鼠标右键关闭，左3在播放音视频时会触发显示
+左2软件可通过鼠标右键关闭，左3在播放音视频时会触发显示，以上所有内容均可自行在配置文件中自定义
 
-以上所有内容均可自行在配置文件中自定义
+### 隐藏功能
+
+鼠标右键YASB任务栏时会显示一个可选栏目：
+
+| 名 | 意思 |
+| :---: | :---: |
+| Active Widgets | 可自行勾选想要启用的功能 |
+| Task manager | 任务管理器 |
+| Take Screenshot | 任务栏截图（默认位置：C:\Users\xxxxx\Pictures\YASB_Screenshots） |
+| Enable/Disable Auto Hide | 自动隐藏/显示任务栏 |
+| Reload Bar | 重启 |
+| Exit | 退出 |
 
 ## 使用方法
 
