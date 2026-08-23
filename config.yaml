@@ -392,5 +392,5 @@ widgets:
         label_alt: "<span>\uf108</span>"
         class_name: "desktop-folder-widget"
         callbacks:
-          on_left: "exec explorer.exe D:\\Desktop\\za\\桌面图标"
+          on_left: "exec explorer.exe C:\\example\\example\\1"
           on_right: "do_nothing"
