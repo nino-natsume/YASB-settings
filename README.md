@@ -4,7 +4,8 @@
 
 ## 示例图
 
-<img width="1916" height="47" alt="example" src="https://github.com/user-attachments/assets/8bdb5251-e86f-4d83-a80b-2be2c3aa8c92" />
+<img width="1919" height="308" alt="image" src="https://github.com/user-attachments/assets/59c291bd-e9a7-43ac-96ce-24024c1b3b8a" />
+
 
 ### 说明
 
