@@ -9,7 +9,45 @@ bars:
     enabled: true
     screens:
     - '*'
-    class_name: yasb-bar
+    class_name: yasb-bar dynamic-island
+    alignment:
+      position: top
+      align: left
+    animation:
+      enabled: true
+      duration: 300
+    blur_effect:
+      enabled: false
+      round_corners: true
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+    dimensions:
+      width: 100%
+      height: 38
+    padding:
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+    widgets:
+      left:
+      - desktop_folder
+      - app_collapse
+      - taskbar
+      - media
+      center: []
+      right:
+      - cava
+      - memory
+      - notifications
+      - systray
+      - power_menu
+  clock-bar:
+    enabled: true
+    screens:
+    - '*'
+    class_name: yasb-bar clock-island
     alignment:
       position: top
       align: center
@@ -20,11 +58,10 @@ bars:
       enabled: false
       round_corners: true
     window_flags:
-      always_on_top: false
-      windows_app_bar: true
+      always_on_top: true
     dimensions:
-      width: 100%
-      height: 36
+      width: auto
+      height: 38
     padding:
       top: 0
       left: 0
@@ -32,21 +69,30 @@ bars:
       right: 0
     widgets:
       left:
-      - desktop_folder
-      - lines
-      - taskbar
-      - media
-      center:
-      - clock
-      right:
-      - cava
-      - systray
-      - memory
-      - quick_launch
-      - notifications
-      - power_menu
+      - clock2
+      center: []
+      right: []
 widgets:
   clock:
+    type: yasb.clock.ClockWidget
+    options:
+      label: '{%Y.%m.%d %a %H:%M}<span>{alarm}</span>'
+      label_alt: '{%Y.%m.%d %a %H:%M}'
+      timezones: []
+      calendar:
+        blur: false
+        round_corners: true
+        alignment: center
+        direction: down
+        extended: false
+        show_years: true
+        show_holidays: false
+        show_week_numbers: true
+      callbacks:
+        on_left: toggle_calendar
+        on_middle: do_nothing
+        on_right: do_nothing
+  clock2:
     type: yasb.clock.ClockWidget
     options:
       label: '{%Y.%m.%d %a %H:%M}<span>{alarm}</span>'
@@ -95,110 +141,25 @@ widgets:
       buttons:
         lock:
         - "\uDB80\uDF41"
-        - 锁定
+        - 锁  定
         signout:
         - "\uDB80\uDF43"
-        - 注销
+        - 注  销
         sleep:
         - "\uDB82\uDD04"
-        - 睡眠
+        - 睡  眠
         hibernate:
         - "\uDB82\uDD01"
-        - 休眠
+        - 休  眠
         restart:
         - "\uDB81\uDC53"
-        - 重启
+        - 重  启
         shutdown:
         - "\uDB82\uDD06"
-        - 关机
+        - 关  机
         cancel:
         - ''
-        - 取消
-  active_window:
-      type: yasb.active_window.ActiveWindowWidget
-      options:
-        label: '{win[title]}'
-        label_alt: '{win[title]}'
-        label_no_window: ''
-        label_icon: true
-        label_icon_size: 16
-        max_length: 32
-        max_length_ellipsis: '...'
-        monitor_exclusive: false
-  win_button:
-      type: "yasb.custom.CustomWidget"
-      options:
-        label: "\uf09b"
-        label_alt: "\uf09b"
-        class_name: "system-widget"
-        callbacks:
-          on_left: "exec start_menu"
-  lines:
-      type: "yasb.custom.CustomWidget"
-      options:
-        label: "\u007c"
-        label_alt: "\u007c"
-        class_name: "separator-widget"
-        callbacks:
-          on_left: "do_nothing"
-  komorebi_workspaces:
-      type: "komorebi.workspaces.WorkspaceWidget"
-      options:
-        label_offline: "Komorebi Offline"
-        label_workspace_btn: "{index}"
-        label_workspace_active_btn: "{index}"
-        label_workspace_populated_btn: "{index}"
-        label_default_name: ""
-        label_zero_index: false
-        hide_empty_workspaces: true
-        hide_if_offline: false
-        toggle_workspace_layer:
-          enabled: false
-          tiling_label: "Tiling"
-          floating_label: "Floating"
-        app_icons: 
-          enabled_populated: false
-          enabled_active: false
-          size: 12
-          max_icons: 0
-          hide_label: false
-          hide_duplicates: false
-          hide_floating: false
-  komorebi_active_layout:
-      type: "komorebi.active_layout.ActiveLayoutWidget"
-      options:
-        hide_if_offline: true
-        label: "{layout_name}"
-        layouts: ['bsp', 'columns', 'rows', 'grid', 'vertical_stack', 'horizontal_stack', 'ultrawide_vertical_stack','right_main_vertical_stack']
-        layout_icons:
-          bsp: "\uebeb"
-          columns: "\uebf7"
-          rows: "\uec01"
-          grid: "\udb81\udf58"
-          scrolling: "\uebf7"
-          vertical_stack: "\uebee"
-          horizontal_stack: "\uebf0"
-          ultrawide_vertical_stack: "\uebee"
-          right_main_vertical_stack: "\uebf1"
-          monocle: "\uf06f"
-          maximized: "\uf06f"
-          floating: "\uf2d2"
-          paused: "\udb83\udf89"
-          tiling: "\udb81\ude40"
-        callbacks:
-          on_left: 'toggle_layout_menu'
-          on_middle: 'next_layout'
-          on_right: 'prev_layout'
-        layout_menu:
-          blur: false
-          round_corners: true
-          round_corners_type: "normal"
-          border_color: "System"
-          alignment: "left"
-          direction: "down"
-          offset_top: 6
-          offset_left: 0
-          show_layout_icons: true
+        - 取  消
   cava:
       type: "yasb.cava.CavaWidget"
       options:
@@ -206,9 +167,9 @@ widgets:
         min_bar_height: 0
         gradient: 1
         foreground: "#89b4fa"
-        gradient_color_1: '#ff00ff'
-        gradient_color_2: '#ffb7c5'
-        gradient_color_3: '#ff00ff'
+        gradient_color_1: '#7aa2f7'
+        gradient_color_2: '#89ddff'
+        gradient_color_3: '#c0caf5'
         bars_number: 70
         bar_spacing: 2
         bar_width: 2
@@ -228,7 +189,7 @@ widgets:
           on_middle: "do_nothing"
           on_right: "do_nothing"
         max_field_size:
-          label: 45
+          label: 33
           label_alt: 30
         show_thumbnail: false
         controls_only: false
@@ -262,16 +223,16 @@ widgets:
           prev_track: "\udb81\udcae"
           next_track: "\udb81\udcad"
         scrolling_label:
-          enabled: false
-          update_interval_ms: 33
-          style: "left"  # can be "left", "right", "bounce", "bounce-ease"
+          enabled: true
+          update_interval_ms: 45
+          style: "bounce-ease"  # can be "left", "right", "bounce", "bounce-ease"
           separator: " | "
           label_padding: 0
           always_scroll: false
         # Easing curve params: https://www.desmos.com/calculator/j7eamemxzi
           ease_slope: 20
           ease_pos: 0.8
-          ease_min: 0.5
+          ease_min: 0.95
         progress_bar:
           enabled: false       # Whether to enable the progress bar on the widget.
           alignment: "bottom"  # The alignment of the progress bar inside the widget container. Can be "top", "bottom", or "center".
@@ -282,11 +243,6 @@ widgets:
         label_alt: "<span>\uf2db</span>{virtual_mem_used} | {virtual_mem_percent}%"
         update_interval: 2000
         hide_decimal: false
-        label_shadow:
-          enabled: true
-          color: "black"
-          radius: 3
-          offset: [1, 1]
         callbacks:
           on_left: "toggle_menu"
           on_middle: "toggle_label"
@@ -306,34 +262,12 @@ widgets:
           show_graph_grid: false
           pin_icon: "\ue718"
           unpin_icon: "\ue77a"
-  quick_launch:
-      type: "yasb.quick_launch.QuickLaunchWidget"
-      options:
-        label: "<span>\uf002</span>"
-        search_placeholder: "Search applications..."
-        max_results: 30
-        show_icons: true
-        icon_size: 32
-        popup:
-          width: 650
-          height: 400
-          blur: false
-          round_corners: true
-          round_corners_type: "normal"
-          border_color: "system"
-          dark_mode: true
-        callbacks:
-          on_left: "toggle_quick_launch"
-        keybindings:
-          - keys: "alt+space"
-            action: "toggle_quick_launch"
-            screen: "primary"
   systray:
       type: "yasb.systray.SystrayWidget"
       options:
         class_name: "systray"
-        label_collapsed: "\uf106"
-        label_expanded: "\uf107"
+        label_collapsed: "\uf053"
+        label_expanded: "\uf054"
         label_position: "right"
         icon_size: 16
         pin_click_modifier: "alt"
@@ -346,7 +280,7 @@ widgets:
         icons_per_row: 4
         hide_icons: []
         popup:
-          blur: false
+          blur: true
           round_corners: true
           round_corners_type: "normal"
           border_color: "System"
@@ -392,5 +326,130 @@ widgets:
         label_alt: "<span>\uf108</span>"
         class_name: "desktop-folder-widget"
         callbacks:
-          on_left: "exec explorer.exe C:\\example\\example\\1"
-          on_right: "do_nothing"
+          on_left: "exec explorer.exe D:\\Desktop\\za\\桌面图标"
+          on_right: &app_sort 'exec "C:\Users\10932\AppData\Local\Programs\Python\Python314\pythonw.exe" -c "import sys;exec(bytes.fromhex(sys.argv[1]).decode())" 23202D2A2D20636F64696E673A207574662D38202D2A2D0A222222E58685E88194E68E92E5BA8FE88F9CE58D9520763220E28094E28094204E6F726420E9858DE889B2202B20E585A8E983A8E59BBAE5AE9AE5BA94E794A8E68E92E5BA8F202B20E590AFE794A82FE7A681E794A8E68C81E4B985E58C96E380820AE7BAA6E69D9FEFBC9AE585A8E69687E4B88DE5BE97E587BAE78EB0E58D95E5BC95E58FB7EFBC9BE5AD97E7ACA6E4B8B2E4B880E5BE8BE58F8CE5BC95E58FB7E38082E5B086E8A2AB2068657820E58C96E5B58CE585A520636F6E6669672E79616D6CE380820A2222220A696D706F7274206374797065730A696D706F7274206F730A696D706F72742072650A696D706F7274207379730A696D706F72742074656D7066696C650A696D706F727420746B696E74657220617320746B0A66726F6D20746B696E74657220696D706F7274204D656E750A0A55203D206F732E656E7669726F6E5B225553455250524F46494C45225D0A434647203D2055202B20225C5C2E636F6E6669675C5C796173625C5C636F6E6669672E79616D6C220A41505053203D207B0A202020202265646765223A202245646765222C0A2020202022656467655F73686F7274637574223A202245646765222C0A2020202022636C6173685F7665726765223A2022436C617368205665726765222C0A20202020226765656B223A20224765656B222C0A2020202022777574686572696E675F7761766573223A2022E9B8A3E6BDAE222C0A202020202272616D6D6170223A202252414D4D6170222C0A20202020226465736B746F705F666F6C646572223A2022E6A18CE99DA2E69687E4BBB6E5A4B9222C0A20202020226B6173706572736B79223A2022E58DA1E5B7B4E696AFE59FBA222C0A2020202022776973655F636C65616E6572223A202257697365204469736B20436C65616E6572222C0A20202020227770735F6F6666696365223A2022575053204F6666696365222C0A20202020226E6574656173655F6D75736963223A2022E7BD91E69893E4BA91E99FB3E4B990222C0A7D0A0A77697468206F70656E284346472C20656E636F64696E673D227574662D38222C206E65776C696E653D22222920617320663A0A2020202054203D20662E7265616428290A454F4C203D20225C725C6E2220696620225C725C6E2220696E205420656C736520225C6E220A4D203D2072652E736561726368280A202020207222283F6D73295E283F503C6C693E202A296C6566743A5B205C745D2A5C723F5C6E283F503C626C6B3E283F3A202A2D5B205C745D2A5B5C772D5D2B5B205C745D2A5C723F5C6E292B3F29202A63656E7465723A222C0A20202020542C0A290A504154203D2072652E636F6D70696C652872225E28202A292D285B205C745D2A29285B5C772D5D2B295B205C745D2A2422290A6966206E6F74204D3A0A202020207072696E7428224641494C3A206C65667420626C6F636B206E6F7420666F756E6422290A202020207379732E657869742831290A424C4B203D204D2E67726F75702822626C6B22292E73706C69746C696E657328290A494E44454E54203D204D2E67726F757028226C6922290A534C4F5453203D205B6920666F7220692C206C20696E20656E756D657261746528424C4B290A2020202020202020206966205041542E6D61746368286C2920616E64205041542E6D61746368286C292E67726F757028332920696E20415050535D0A534C4F545F534554203D2073657428534C4F5453290A696620534C4F54533A0A20202020494E44454E54203D205041542E6D6174636828424C4B5B534C4F54535B305D5D292E67726F75702831290A435552203D205B5041542E6D6174636828424C4B5B695D292E67726F757028332920666F72206920696E20534C4F54535D0A0A0A646566207361766528293A0A20202020726573203D205B5D0A202020206B203D20300A20202020696E735F6174203D204E6F6E650A20202020666F7220692C206C20696E20656E756D657261746528424C4B293A0A20202020202020206966206920696E20534C4F545F5345543A0A2020202020202020202020206966206B203C206C656E28435552293A0A202020202020202020202020202020206D6D203D205041542E6D61746368286C290A202020202020202020202020202020207265732E617070656E64282225732D2573257322202520286D6D2E67726F75702831292C206D6D2E67726F75702832292C204355525B6B5D29290A20202020202020202020202020202020696E735F6174203D206C656E28726573290A202020202020202020202020202020206B202B3D20310A2020202020202020656C73653A0A2020202020202020202020207265732E617070656E64286C290A20202020696620696E735F6174206973204E6F6E653A0A2020202020202020696E735F6174203D206C656E28726573290A202020207768696C65206B203C206C656E28435552293A0A20202020202020207265732E696E7365727428696E735F61742C202225732D25732220252028494E44454E542C204355525B6B5D29290A2020202020202020696E735F6174202B3D20310A20202020202020206B202B3D20310A202020204E54203D20545B3A4D2E73746172742822626C6B22295D202B20454F4C2E6A6F696E2872657329202B20454F4C202B20545B4D2E656E642822626C6B22293A5D0A2020202066642C20746D70203D2074656D7066696C652E6D6B7374656D70286469723D6F732E706174682E6469726E616D6528434647292C207375666669783D222E746D7022290A2020202077697468206F732E66646F70656E2866642C202277222C20656E636F64696E673D227574662D38222C206E65776C696E653D22222920617320663A0A2020202020202020662E7772697465284E54290A202020206F732E7265706C61636528746D702C20434647290A0A0A64656620676F28612C2064293A0A2020202070203D204355522E696E6465782861290A202020204355522E696E73657274286D617828302C206D696E286C656E2843555229202D20312C2070202B206429292C204355522E706F70287029290A202020207361766528290A20202020722E64657374726F7928290A0A0A6465662072657628293A0A202020204355522E7265766572736528290A202020207361766528290A20202020722E64657374726F7928290A0A0A64656620686964652861293A0A202020204355522E72656D6F76652861290A202020207361766528290A20202020722E64657374726F7928290A0A0A6465662073686F772861293A0A202020204355522E617070656E642861290A202020207361766528290A20202020722E64657374726F7928290A0A0A696620222D2D73656C66746573742220696E207379732E617267763A0A202020207072696E7428224F524445523A22202B20222C222E6A6F696E2843555229290A202020207072696E74282248494444454E3A22202B20222C222E6A6F696E286120666F72206120696E20415050532069662061206E6F7420696E2043555229290A202020207379732E657869742830290A0A72203D20746B2E546B28290A722E776974686472617728290A722E61667465722836303030302C20722E64657374726F79290A5354203D2064696374280A2020202062673D2223336234323532222C2066673D2223643864656539222C0A202020206163746976656261636B67726F756E643D2223346335363661222C20616374697665666F726567726F756E643D2223656365666634222C0A20202020666F6E743D28224D6963726F736F6674205961486569205549222C203130292C20626F7264657277696474683D302C0A290A6D203D204D656E7528722C20746561726F66663D302C202A2A5354290A666F722061696420696E206C69737428435552293A0A20202020736D203D204D656E7528722C20746561726F66663D302C202A2A5354290A20202020736D2E6164645F636F6D6D616E64286C6162656C3D22E2978020E5B7A6E7A7BBE4B880E4BD8D222C20636F6D6D616E643D6C616D62646120613D6169643A20676F28612C202D3129290A20202020736D2E6164645F636F6D6D616E64286C6162656C3D22E296B620E58FB3E7A7BBE4B880E4BD8D222C20636F6D6D616E643D6C616D62646120613D6169643A20676F28612C203129290A20202020736D2E6164645F636F6D6D616E64286C6162656C3D22E296B220E7A7BBE588B0E69C80E5898D222C20636F6D6D616E643D6C616D62646120613D6169643A20676F28612C202D6C656E284355522929290A20202020736D2E6164645F636F6D6D616E64286C6162656C3D22E296BC20E7A7BBE588B0E69C80E5908E222C20636F6D6D616E643D6C616D62646120613D6169643A20676F28612C206C656E284355522929290A20202020736D2E6164645F736570617261746F7228290A20202020736D2E6164645F636F6D6D616E64286C6162656C3D22C39720E4BB8EE78AB6E68081E6A08FE99A90E8978F222C20636F6D6D616E643D6C616D62646120613D6169643A2068696465286129290A202020206D2E6164645F63617363616465286C6162656C3D415050532E676574286169642C20616964292C206D656E753D736D290A484944203D205B6120666F72206120696E20415050532069662061206E6F7420696E204355525D0A6966204849443A0A20202020616D203D204D656E7528722C20746561726F66663D302C202A2A5354290A20202020666F72206820696E204849443A0A2020202020202020616D2E6164645F636F6D6D616E64286C6162656C3D22EFBC8B2022202B20415050535B685D2C20636F6D6D616E643D6C616D62646120783D683A2073686F77287829290A202020206D2E6164645F63617363616465286C6162656C3D22EFBC8B20E698BEE7A4BAE59BBEE6A087222C206D656E753D616D290A6D2E6164645F736570617261746F7228290A6D2E6164645F636F6D6D616E64286C6162656C3D22E28691E2869320E58F8DE8BDACE585A8E983A8E9A1BAE5BA8F222C20636F6D6D616E643D726576290A50203D2074797065282250222C20286374797065732E5374727563747572652C292C207B225F6669656C64735F223A205B282278222C206374797065732E635F6C6F6E67292C20282279222C206374797065732E635F6C6F6E67295D7D290A7074203D205028290A6374797065732E77696E646C6C2E7573657233322E476574437572736F72506F73286374797065732E627972656628707429290A6D2E746B5F706F7075702870742E782C2070742E79290A722E6D61696E6C6F6F7028290A'
+  # ---- 可收缩应用组：从 RAMMap 到网易云音乐 ----
+  app_collapse:
+      type: "yasb.grouper.GrouperWidget"
+      options:
+        class_name: "app-collapser"
+        widgets:
+          - edge
+          - clash_verge
+          - geek
+          - wuthering_waves
+          - rammap
+          - Weixin
+          - kaspersky
+          - wise_cleaner
+          - wps_office
+          - netease_music
+
+        hide_empty: false
+        collapse_options:
+          enabled: true
+          exclude_widgets: []
+          expanded_label: "\uf053"
+          collapsed_label: "\uf054"
+          label_position: "left"
+  edge:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/edge.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/edge.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  clash_verge:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/clash-verge.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/clash-verge.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "D:\Clash\Clash Verge\clash-verge.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  geek:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/geek.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/geek.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: "exec D:\\Desktop\\za\\桌面图标\\geek.exe"
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  wuthering_waves:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/wuthering-waves.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/wuthering-waves.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "E:\MC\Wuthering Waves\launcher.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  rammap:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/rammap.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/rammap.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: "exec D:\\RAMMap\\RAMMap.exe"
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  # ---- 固定应用（左键启动；右键打开拖拽排序菜单 app_sort） ----
+  kaspersky:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/kaspersky.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/kaspersky.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "C:\Program Files (x86)\Kaspersky Lab\Kaspersky 21.26\avpui.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  wise_cleaner:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/wise-cleaner.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/wise-cleaner.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "D:\Clean\Wise Disk Cleaner\WiseDiskCleaner.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  wps_office:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/wps.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/wps.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "D:\WPS Office\12.1.0.26899\office6\ksolaunch.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  netease_music:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: '<img src="file:///C:/Users/10932/.config/yasb/icons/netease-music.png" width="16" height="16">'
+        label_alt: '<img src="file:///C:/Users/10932/.config/yasb/icons/netease-music.png" width="16" height="16">'
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "D:\WYY\CloudMusic\cloudmusic.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
+  Weixin:
+      type: "yasb.custom.CustomWidget"
+      options:
+        label: "<span>\uf1d7</span>"
+        label_alt: "<span>\uf1d7</span>"
+        class_name: "app-shortcut-widget"
+        callbacks:
+          on_left: 'exec "D:\Weixin\Weixin.exe"'
+          on_middle: "do_nothing"
+          on_right: *app_sort
