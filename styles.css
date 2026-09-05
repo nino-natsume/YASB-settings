@@ -136,8 +136,13 @@
     --redFlash: #898989;
     --subtext: #4B565C; */
 
-/* Tokyo Night (arika-eri: translucent) */
-    --background: rgba(26, 27, 38, 0.62);
+/* ================= ANIME THEME PACK (高自定义，换色即换主题) =================
+   切主题 = 把你要的那组变量取消注释、其它组注释掉即可。
+   注：--background/--background2 用 rgba 半透明可实现"毛玻璃/透明"效果。
+   ============================================================================= */
+
+    /* 【东京夜 Tokyo Night】(原激活，透明版) — 蓝紫冷调 */
+    /* --background: rgba(26, 27, 38, 0.62);
     --background2: rgba(65, 72, 104, 0.55);
     --accent: #9aa5ce;
     --text: #c0caf5;
@@ -146,7 +151,91 @@
     --mutedBG: #414868;
     --border: #414868;
     --redFlash: #f7768e;
-    --subtext: #9aa5ce;
+    --subtext: #9aa5ce; */
+
+    /* ★ 樱花粉 Sakura Pink（备用）— 02酱/魔法少女 粉系 */
+    /* --background: rgba(43, 26, 46, 0.66);
+    --background2: rgba(74, 42, 74, 0.60);
+    --accent: #ff7aa8;
+    --text: #ffe4ef;
+    --accentText: #2c1830;
+    --hover: #9c4f74;
+    --mutedBG: #5c3a5e;
+    --border: #9c4f74;
+    --redFlash: #ff4d6d;
+    --subtext: #d9a6c8; */
+
+    /* ★ 蓝紫星夜 Blue-Violet Starlight (当前激活 / custom anime) — 蓝为主，紫调味，蓝加深版 */
+    --background: rgba(24, 60, 130, 0.60);
+    --background2: rgba(38, 80, 160, 0.55);
+    --accent: #5b8cff;
+    --text: #eaf1ff;
+    --accentText: #0b1a38;
+    --hover: #3762b8;
+    --mutedBG: #1c3a78;
+    --border: #3762b8;
+    --redFlash: #ff6b9d;
+    --subtext: #8fb0e8;
+
+    /* ・樱之梦 Sakura Dream（更亮更粉） */
+    /* --background: rgba(50, 30, 52, 0.62);
+    --background2: rgba(90, 48, 86, 0.55);
+    --accent: #ff9bc2;
+    --text: #fff0f6;
+    --accentText: #3a1f38;
+    --hover: #b25684;
+    --mutedBG: #6a4466;
+    --border: #b25684;
+    --redFlash: #ff6080;
+    --subtext: #e0b0d0; */
+
+    /* ・初音未来 Hatsune Miku（青绿） */
+    /* --background: rgba(22, 36, 48, 0.64);
+    --background2: rgba(36, 66, 90, 0.55);
+    --accent: #39c5cf;
+    --text: #e6f9fb;
+    --accentText: #0f2730;
+    --hover: #2f8f9e;
+    --mutedBG: #2c5e6e;
+    --border: #2f8f9e;
+    --redFlash: #ff8fa3;
+    --subtext: #9fd8e0; */
+
+    /* ・魔女之夜 Madoka 魔法少女紫 */
+    /* --background: rgba(30, 24, 52, 0.66);
+    --background2: rgba(50, 40, 88, 0.58);
+    --accent: #a78bfa;
+    --text: #ede9fe;
+    --accentText: #241b4a;
+    --hover: #7c5cd6;
+    --mutedBG: #4c3f7a;
+    --border: #7c5cd6;
+    --redFlash: #ff6b9d;
+    --subtext: #c4b5fd; */
+
+    /* ・葬送的芙莉莲 Frieren（治愈绿） */
+    /* --background: rgba(30, 40, 36, 0.64);
+    --background2: rgba(52, 70, 62, 0.56);
+    --accent: #9ec3a6;
+    --text: #eef4ec;
+    --accentText: #1c2a22;
+    --hover: #6d9471;
+    --mutedBG: #3e5a4e;
+    --border: #6d9471;
+    --redFlash: #e08a8a;
+    --subtext: #b6cdb4;
+
+    /* ・四月是你的谎言 Your Lie In April（蓝） */
+    /* --background: rgba(24, 34, 50, 0.64);
+    --background2: rgba(40, 58, 84, 0.56);
+    --accent: #7c9fd0;
+    --text: #c8d6f0;
+    --accentText: #16263c;
+    --hover: #4f6f9e;
+    --mutedBG: #33476a;
+    --border: #4f6f9e;
+    --redFlash: #e8999b;
+    --subtext: #a9c0e0; */
 
     /* Everforest Dark */
     /* --background: #2E383C;
@@ -182,11 +271,12 @@
 }
 
 
-/* Bar (arika-eri: fully transparent bar shell) */
+/* Bar (arika-eri: fully transparent bar shell, 只改组件颜色) */
 .yasb-bar {
     background-color: rgba(26, 27, 38, 0.01);
     padding: 4px 14px;
     border-top: none;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
 }
 
 /* Tooltip */
@@ -285,7 +375,8 @@
     margin: 0px 3px;
     background-color: var(--background);
     border-radius: var(--border-radius);
-    border: 0px solid var(--border);
+    border: 1px solid rgba(122, 162, 247, 0.22);
+    box-shadow: 0 0 8px rgba(122, 162, 247, 0.12), inset 0 0 6px rgba(192, 202, 245, 0.05);
 }
 
 .widget .icon {
@@ -839,20 +930,21 @@
 
 .systray-popup {
     background-color: var(--background);
-    padding: 4px;
-    border-radius: var(--border-radius);
+    padding: 6px;
+    border-radius: 14px;
     border: 1px solid var(--border);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 .systray-popup .button {
     padding: 12px;
-    margin: 0;
+    margin: 2px;
     border: 0;
-    border-radius: var(--border-radius);
-    background-color: var(--background);
+    border-radius: 10px;
+    background-color: transparent;
 }
 .systray-popup .button:hover {
     background-color: var(--hover);
-    border-radius: var(--border-radius2);
+    border-radius: 10px;
 }
 
 
@@ -1151,7 +1243,7 @@ Example: "Windows Media" becomes "windows-media" */
 }
 /* Search prefix styling (e.g., ">" for commands) */
 .quick-launch-popup .search .prefix {
-	background: #2167d8;
+	background: #5b8cff;
 	border-radius: 6px;
 	color: var(--text);
 	padding: -2px 8px 0px 8px;
@@ -1306,6 +1398,8 @@ Example: "Windows Media" becomes "windows-media" */
 #media,
 .media-widget.widget {
     margin-left: -3px;
+    max-width: 330px;
+    min-width: 60px;
 }
 
 /* Taskbar: icon-only polish */
@@ -1314,15 +1408,15 @@ Example: "Windows Media" becomes "windows-media" */
     padding: 0 5px;
 }
 .taskbar-widget .app-container.running {
-    background-color: rgba(122, 124, 125, 0.22);
+    background-color: rgba(55, 98, 184, 0.38);
 }
 .taskbar-widget .app-container:hover {
-    background-color: rgba(86, 95, 137, 0.45);
+    background-color: rgba(91, 140, 255, 0.45);
 }
 
 /* Quick Launch Popup: reduce transparency by 25% (more opaque) */
 .quick-launch-popup .container {
-    background-color: rgba(26, 27, 38, 0.82);
+    background-color: rgba(24, 28, 60, 0.82);
     border: 1px solid var(--border);
     border-radius: var(--border-radius);
 }
@@ -1336,7 +1430,7 @@ Example: "Windows Media" becomes "windows-media" */
     margin: 0 !important;
 }
 .systray .button:hover {
-    background: rgba(195, 159, 241, 0.14) !important;
+    background: rgba(142, 162, 255, 0.14) !important;
     border-radius: 4px !important;
 }
 .systray .unpinned-visibility-btn {
@@ -1344,12 +1438,19 @@ Example: "Windows Media" becomes "windows-media" */
     border: none !important;
 }
 .systray .unpinned-visibility-btn:hover {
-    background: rgba(195, 159, 241, 0.14) !important;
+    background: rgba(142, 162, 255, 0.14) !important;
     border-radius: 4px !important;
 }
 
 /* Desktop folder icon - white */
 .desktop-folder-widget .icon {
+    color: #ffffff !important;
+}
+
+/* Pinned app shortcut widgets (edge / clash verge / geek / wuthering waves)
+   Icons are real app icons extracted from each exe into ~/.config/yasb/icons/
+   and embedded via <img> tags in config.yaml labels. */
+.app-shortcut-widget .icon {
     color: #ffffff !important;
 }
 
@@ -1375,6 +1476,7 @@ Example: "Windows Media" becomes "windows-media" */
     font-weight: 700;
     font-family: var(--system-font);
     background: transparent;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* Icon span inside the label (white) */
@@ -1418,7 +1520,7 @@ Example: "Windows Media" becomes "windows-media" */
 
 .memory-popup .header .pin-btn:hover {
     color: var(--text);
-    background: rgba(137, 180, 250, 0.08);
+    background: rgba(142, 162, 255, 0.10);
     border-radius: 4px;
 }
 
@@ -1486,4 +1588,121 @@ Example: "Windows Media" becomes "windows-media" */
     color: var(--text);
     font-family: var(--system-font), 'Segoe UI';
     padding: 2px 0;
+}
+
+/* ================================= */
+/* === APP COLLAPSE GROUP (Grouper) === */
+/* ================================= */
+.app-collapser .grouper-button {
+    padding: 0 4px;
+    margin: 0 2px;
+    border-radius: var(--border-radius3);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.app-collapser .grouper-button:hover {
+    background: var(--hover);
+}
+
+.app-collapser .grouper-button .label {
+    font-family: var(--icons-font-fallback);
+    font-size: 10px;
+    color: var(--accent);
+}
+
+/* ================================ */
+/* === DYNAMIC ISLAND OVERRIDES === */
+/* ================================ */
+
+/* The bar shell itself — fully transparent, only the components form the island */
+.yasb-bar.dynamic-island {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    -appbar-background-color: transparent !important;
+}
+
+/* Clock bar — transparent shell, centered on screen */
+.yasb-bar.clock-island {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    -appbar-background-color: transparent !important;
+}
+.yasb-bar.clock-island .clock-widget {
+    background-color: rgba(24, 30, 48, 0.72);
+    border: 1px solid rgba(122, 162, 247, 0.28);
+    border-radius: 16px;
+    margin: 0 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35), inset 0 0 8px rgba(192, 202, 245, 0.06);
+}
+.yasb-bar.clock-island .clock-widget:hover {
+    background-color: rgba(55, 98, 184, 0.55);
+}
+.yasb-bar.clock-island .clock-widget .label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text);
+    padding: 0 12px;
+}
+
+/* Compact top padding: bar floats clear of the screen top edge */
+.yasb-bar.dynamic-island {
+    padding: 6px 18px 6px 18px;
+}
+
+/* Each component is its own dynamic-island pill */
+.yasb-bar.dynamic-island .widget {
+    background-color: rgba(24, 30, 48, 0.72);
+    border: 1px solid rgba(122, 162, 247, 0.28);
+    border-radius: 16px;
+    margin: 0 4px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35), inset 0 0 8px rgba(192, 202, 245, 0.06);
+}
+
+.yasb-bar.dynamic-island .widget:hover {
+    background-color: rgba(55, 98, 184, 0.55);
+}
+
+/* Inside each island component: icons/labels are clean — no per-icon
+   box, no background, no border, no rounded rect behind the glyph. */
+.yasb-bar.dynamic-island .widget .icon {
+    color: var(--text);
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.yasb-bar.dynamic-island .widget .label,
+.yasb-bar.dynamic-island .widget .label span,
+.yasb-bar.dynamic-island .widget span {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+/* Island component inner buttons (systray icons, app shortcuts) zeroed */
+.yasb-bar.dynamic-island .widget .button,
+.yasb-bar.dynamic-island .widget button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+/* Cava / media removal within island space not used, keep tidy */
+.yasb-bar.dynamic-island .cava-widget,
+.yasb-bar.dynamic-island .media-widget {
+    margin: 0 4px;
+}
+
+/* Taskbar icons smaller inside island */
+.yasb-bar.dynamic-island .taskbar-widget .app-container {
+    margin: 3px 2px;
+    padding: 0 4px;
+    background-color: transparent;
+    border: none;
 }
