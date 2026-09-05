@@ -23,23 +23,6 @@
 
 左2软件可通过鼠标右键关闭，左3在播放音视频时会触发显示，以上所有内容均可自行在配置文件中自定义
 
-### 隐藏功能
-
-鼠标右键YASB任务栏时会显示一个可选栏目：
-
-| 名 | 意思 |
-| :---: | :---: |
-| Active Widgets | 可自行勾选想要启用的功能 |
-| Task manager | 任务管理器 |
-| Take Screenshot | 任务栏截图（默认位置：C:\Users\xxxxx\Pictures\YASB_Screenshots） |
-| Enable/Disable Auto Hide | 自动隐藏/显示任务栏 |
-| Reload Bar | 重启 |
-| Exit | 退出 |
-
 ## 使用方法
 
 将本仓库内的 `config.toml`、`styles.css`下载拖拽覆盖原配置文件，或选择性复制粘贴至配置文件内，保存，若未自动重载则右键YASB，手动 `Reload YASB`重载配置
-
-## 另
-
-default压缩包是我最初开始用的版本，若担心 YASB-Settings 的不稳定建议用 default 这个，把压缩包内容拖至yasb主目录，让它 Reload 一下就能看到效果了
